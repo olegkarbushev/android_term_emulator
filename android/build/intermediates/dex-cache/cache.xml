@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4ab3195d96a6a756a1ed3e285789e52a3fd4883c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_f596861730487e911d7a6b815d8c18c1baa169c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_3e4df6b2a43309ee42b6ca2c806185651e3bfb4b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_ad799bcca84eb3d567b98ded40ccd6735f0b649e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_dd49dbbaf18616d85fb953fab8008c88685a7e05.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_60516a9521365989b380f3f656ea10affb8475c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_a7e09f1a8c9dde5093d1ab25a24649068e2a216d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_65c1bfc2a3635508d41d86d9b797838c89469bd4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_d4e086bd4b3cbb2850616870c957a3be8acd226a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="25843221876adceb43645680defc9511d056c90f">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_0a974141fae2cd63cbc9dfd00a020590ccfc7e3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_814ee7b628752f3d331e21eb18b41ff204942f81.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_f44230f111c0a5fdaa9b61deff44c87058d411bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_4633c7fa804239fd8c016c9c450d5606ef926af0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Program_Files/android-sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_100421690fa904e9da61a1e3b35a45911701ecdb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_42e42b394702c20aaddd9d05a0e372520a2fbded.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4f8681aafdb038efb23036628e4a8140f060f784">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/instant-run_1164fb9d7e8c19c9e84ba4eb1f5e255f7db8647d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/oleg/Work/Soft/Android/ServiceWithSocket/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4d2c884cd4634306a6bb38e26fdca457d68ca315.jar" />
+    </item>
+
+</items>
