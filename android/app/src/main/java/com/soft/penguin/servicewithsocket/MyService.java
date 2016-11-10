@@ -47,8 +47,6 @@ public class MyService extends Service {
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand");
-
         if(mServiceStatusCallback != null) {
             mServiceStatusCallback.onStart();
         }
@@ -116,7 +114,6 @@ public class MyService extends Service {
             }
         }).start();
 
-        Log.d(TAG, "Finished");
         return Service.START_NOT_STICKY;
     }
 
