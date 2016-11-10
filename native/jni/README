@@ -1,4 +1,6 @@
 To compile application run:
 
-1. 
-2. 
+android-ndk required
+
+1. run ndk-build from native folder
+2. find compiled binary in "native/libs" folder
