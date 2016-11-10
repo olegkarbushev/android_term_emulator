@@ -1,6 +1,22 @@
-To compile application run:
+android-ndk required (install, add to the system PATH)
 
-android-ndk required
+-----------------------------------
+for android V < lollipop
+-----------------------------------
+1. cd native
 
-1. run ndk-build from native folder
-2. find compiled binary in "native/libs" folder
+2. nkd-build
+
+-----------------------------------
+For android V > lollipop
+-----------------------------------
+
+1. uncomment lines in Android.mk:
+
+# LOCAL_CFLAGS += -fPIE
+# LOCAL_LDFLAGS += -fPIE -pie
+
+
+2. cd native
+
+3. nkd-build
