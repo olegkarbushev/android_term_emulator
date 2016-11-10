@@ -27,7 +27,7 @@
 
 // Function prototypes
 //#####################################
-void INThandler(int);
+
 
 // Global vars
 //#####################################
@@ -40,36 +40,16 @@ int err;
 struct sockaddr_un addr;
 socklen_t len;
 
-char buffer[] = "Hello from native";
-char entered_data[2048];
+char stdin_buffer[2048];
 
 char *server_addr;
 int is_connected = 0;
 // Global vars END
 //#####################################
 
-
-void  INThandler(int sig) {
-    char  c;
-
-    signal(sig, SIG_IGN);
-    printf("OUCH, did you hit Ctrl-C?\n"
-            "Do you really want to quit? [y/n] ");
-    c = getchar();
-    if (c == 'y' || c == 'Y') {
-        free(server_addr);
-        close(client_socket);
-        exit(0);
-    } else {
-        signal(SIGINT, INThandler);
-    }
-    getchar(); // Get new line character
-}
-
 void* receive_function(void *param) {
     int receiver = *((int *)param);
-    int count;
-    char *data, *dbuf;
+    char *data;
     
     data = (char *) malloc(2048);
     
@@ -78,8 +58,8 @@ void* receive_function(void *param) {
     while(1){
         count = read(receiver, data, sizeof(data) );
         if(count <= 0){ 
-            printf("Server socket has been closed or error occured\r\n");
-            LOGD("Server socket has been closed or error occured");
+            printf("Fialed to read data\r\nServer socket has been closed or error occured\r\n");
+            LOGD("Fialed to read data\nServer socket has been closed or error occured");
             break;
         } else {
             LOGD("> %s", data);
@@ -100,35 +80,35 @@ void* receive_function(void *param) {
 //#####################################
 int main(int argc, char** argv) {
     LOGD("Term emulator started up");
-    
-    signal(SIGINT, INThandler);
 
     server_addr = (char *) malloc(250);
-    
+
     if(server_addr == NULL){
         printf("Failed to allocate memory!\r\n");
         free(server_addr);
         return 1;
     }
 
-    if (argc < 2) {
-        // Tell the user how to run the program
-        printf("Usage: %s \"Socket addres\" \r\n", argv[0]);
-        printf("Default address wil be used: %s\r\n", LOCAL_SERVER_ADDR);
-        strncpy(server_addr, LOCAL_SERVER_ADDR, strlen(LOCAL_SERVER_ADDR));
-        //server_addr[strlen(LOCAL_SERVER_ADDR)] = '\0';
+    if (argc == 2) {
+        if(!strcmp(argv[0], "--help")){
+            printf("Usage: %s \"socket addres\" \r\n", argv[0]);
+        } else {
+            strncpy(server_addr, argv[1], strlen(argv[1]));
+        }
     } else {
-        printf("Term emulator :) \r\n");
-        sscanf(argv[1], "%s", server_addr);
+        strncpy(server_addr, LOCAL_SERVER_ADDR, strlen(LOCAL_SERVER_ADDR));
     }
-    
+
+    LOGD("\"%s\" will be used as socket addr", server_addr);
+    printf("\"%s\" will be used as socket addr\r\n", server_addr);
+
     fflush(stdout);
     addr.sun_family = AF_LOCAL;
     /* use abstract namespace for client_socket path */
     addr.sun_path[0] = '\0';
     strcpy(&addr.sun_path[1], server_addr);
     len = offsetof(struct sockaddr_un, sun_path) + 1 + strlen(&addr.sun_path[1]);
-    
+
     //create client_socket
     LOGD("Creating cleint side client_socket");
     client_socket = socket(PF_LOCAL, SOCK_STREAM, 0);
@@ -136,49 +116,63 @@ int main(int argc, char** argv) {
         err = errno;
         LOGD("%s: Cannot open client_socket: %s (%d)\n",
             __FUNCTION__, strerror(err), err);
+
+        printf("%s: Cannot open client_socket: %s (%d)\n",
+            __FUNCTION__, strerror(err), err);
+
         errno = err;
         free(server_addr);
         return 1;
     }
-        
-    LOGD("Connecting to Java LocalSocketServer");
+
+    LOGD("Connecting to server side");
     if (connect(client_socket, (struct sockaddr *) &addr, len) < 0) {
         err = errno;
         LOGD("%s: connect() failed: %s (%d)\n",
             __FUNCTION__, strerror(err), err);
+
+        printf("%s: connect() failed: %s (%d)\n",
+            __FUNCTION__, strerror(err), err);
+        
         close(client_socket);
         errno = err;
         free(server_addr);
         return 1;
     }
 
-    LOGD("Managed to connect to Java LocalSocketServer");
-    
+    LOGD("Connected to server side");
+    printf("Connected to server side\r\n");
+
     is_connected = 1;
-    
+
     // creating receiver thread
     pthread_create(&receiver_thread, NULL, receive_function, &client_socket);
-    
+
     printf("Enter commands, hit \"<Ctrl> + C\" to exit\r\n");
-    
+
     // sending loop
     while(is_connected){
-        if(fgets(entered_data, sizeof(entered_data), stdin) != NULL) {
-            result = write(client_socket, entered_data, sizeof(entered_data));
-            LOGD("Sent [%d]: %s", result, entered_data);
-            memset(entered_data, '\0' ,sizeof(entered_data));
+        if(fgets(stdin_buffer, sizeof(stdin_buffer), stdin) != NULL) {
+            result = write(client_socket, stdin_buffer, sizeof(stdin_buffer));
+            if(result < 0){
+                printf("Fialed to send data\r\nServer socket has been closed or error occured\r\n");
+                LOGD("Fialed to send data\nServer socket has been closed or error occured");
+                break;
+            }
+            LOGD("Sent [%d]: %s", result, stdin_buffer);
+            memset(stdin_buffer, '\0' ,sizeof(stdin_buffer));
         } else {
             LOGD("Failed to read from stdin");
             exit(0);
         }
     }
 
-    LOGD("Finished Term emulator");
+    LOGD("Finished Term Emulator");
 
     //Join the thread with the main thread
     pthread_join(receiver_thread, NULL);
-    
+
     free(server_addr);
-    
+
     return 0;
 }
