@@ -1,14 +1,18 @@
+-----------------------------------------------------
 # android_term_emulator
+-----------------------------------------------------
 
-native android application to read STDIN and print STDOUT to adb. 
-Android java application with service. 
-Both communicates using Unix domain socket 
+Native android application reads STDIN and prints STDOUT to adb. 
+Android java application with service holds server socket. 
 
-!!! 
+Both apps communicating using Unix domain socket 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 Hardcoded socket name: "com.soft.penguin.localServerSock"
 
 Probably has to be changed, if so - please change in both application!
-!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Folder structure:
 
@@ -21,40 +25,69 @@ Folder structure:
     |-- obj - contains obj
     `-- libs - contains compiled BIN file
 
--- run:
+-----------------------------------------------------
+run:
+-----------------------------------------------------
 
-1. run android application (will create socket server side);
+1. run android application (will create socket server side); 
 
-2. open adb shell adb start native appliction;
+2. click "Start service" to start service, which will create server socket
 
-3. open one more adb shell with logcat: 
-adb logcat -b main | egrep 'emulator'
+3. open adb shell and start native appliction;
 
-4. grab some coffee, enjoy;
+4. open one more adb shell with logcat: 
+adb logcat -b main | egrep 'Emulator!'
 
--- install:
-Android: 
+5. grab some coffee, enjoy;
+
+-----------------------------------------------------
+install:
+-----------------------------------------------------
+
+Android:
+
 app installation is straight forward.
 
 Native:
 
-adb push bin_name /data/local/tmp
-adb shell chmod 751 /data/local/tmp/bin_name
+adb push /libs/<cpu/abi>/bin_name /data/local/tmp
+adb shell chmod 777 /data/local/tmp/bin_name
 adb shell /data/local/tmp/bin_name
 
 example:
-adb push term_emu /data/local/
-adb shell chmod 751 /data/local/tmp/term_emu
+adb push /libs/armeabi-v7a/term_emu /data/local/tmp
+adb shell chmod 777 /data/local/tmp/term_emu
 adb shell /data/local/tmp/term_emu
 
---build:
+-----------------------------------------------------
+build:
+-----------------------------------------------------
+
 Android: 
 build is straight forward
 
 Native:
+
 android-ndk required (install, add to the system PATH)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+for android V < lollipop just follow instructions
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 1. cd native
+
 2. nkd-build
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+for android V > lollipop just follow instructions
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1. uncomment lines
+# LOCAL_CFLAGS += -fPIE
+# LOCAL_LDFLAGS += -fPIE -pie
+in jni/Android.mk
+
+2. cd native
+
+3. nkd-build
 
 example:
 
