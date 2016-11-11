@@ -13,6 +13,8 @@
 
 // Defines
 //#####################################
+#define BUFFER_SIZE 2048
+#define SOCKET_ADDR_STR_SIZE 205
 #define LOCAL_SERVER_ADDR "com.soft.penguin.localServerSock"
 
 #define LOG_TAG "Term Emulator!!!"
@@ -40,7 +42,7 @@ int err;
 struct sockaddr_un addr;
 socklen_t len;
 
-char stdin_buffer[2048];
+char stdin_buffer[BUFFER_SIZE];
 
 char *server_addr;
 int is_connected = 0;
@@ -51,12 +53,12 @@ void* receive_function(void *param) {
     int receiver = *((int *)param);
     char *data;
     
-    data = (char *) malloc(2048);
+    data = (char *) malloc(BUFFER_SIZE);
     
     LOGD("Receiver thread has started, socket: %d", receiver);
     
     while(1){
-        count = read(receiver, data, sizeof(data) );
+        count = read(receiver, data, BUFFER_SIZE );
         if(count <= 0){ 
             printf("Fialed to read data\r\nServer socket has been closed or error occured\r\n");
             LOGD("Fialed to read data\nServer socket has been closed or error occured");
@@ -81,7 +83,7 @@ void* receive_function(void *param) {
 int main(int argc, char** argv) {
     LOGD("Term emulator started up");
 
-    server_addr = (char *) malloc(250);
+    server_addr = (char *) malloc(SOCKET_ADDR_STR_SIZE);
 
     if(server_addr == NULL){
         printf("Failed to allocate memory!\r\n");
