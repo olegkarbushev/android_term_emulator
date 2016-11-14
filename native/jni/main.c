@@ -14,7 +14,7 @@
 // Defines
 //#####################################
 #define BUFFER_SIZE 2048
-#define SOCKET_ADDR_STR_SIZE 205
+#define SOCKET_ADDR_STR_SIZE 250
 #define LOCAL_SERVER_ADDR "com.soft.penguin.localServerSock"
 
 #define LOG_TAG "Term Emulator!!!"
@@ -43,6 +43,7 @@ struct sockaddr_un addr;
 socklen_t len;
 
 char stdin_buffer[BUFFER_SIZE];
+char received_data[BUFFER_SIZE];
 
 char *server_addr;
 int is_connected = 0;
@@ -51,28 +52,24 @@ int is_connected = 0;
 
 void* receive_function(void *param) {
     int receiver = *((int *)param);
-    char *data;
-    
-    data = (char *) malloc(BUFFER_SIZE);
-    
+
     LOGD("Receiver thread has started, socket: %d", receiver);
-    
+
     while(1){
-        count = read(receiver, data, BUFFER_SIZE );
+        memset(received_data, '\0' ,sizeof(received_data));
+        count = read(receiver, received_data, BUFFER_SIZE );
         if(count <= 0){ 
-            printf("Fialed to read data\r\nServer socket has been closed or error occured\r\n");
-            LOGD("Fialed to read data\nServer socket has been closed or error occured");
+            printf("Failed to read data\r\nServer socket has been closed or error occured\r\n");
+            LOGD("Failed to read data\nServer socket has been closed or error occured");
             break;
         } else {
-            LOGD("> %s", data);
-            printf("> %s\r\n", data);
-            //fflush(stdout);
+            LOGD("> %s", received_data);
+            printf("> %s\r\n", received_data);
         }
     }
-    
+
     LOGD("Receiver thread has finised");
-    free(data);
-    
+
     is_connected = 0;
 
     return NULL;
@@ -92,14 +89,14 @@ int main(int argc, char** argv) {
     }
 
     if (argc == 2) {
-        if(!strcmp(argv[0], "--help")){
-            printf("Usage: %s \"socket addres\" \r\n", argv[0]);
+        if(!strcmp(argv[1], "--help")){
+            printf("\r\nUsage: \r\n %s \"socket addres\" \r\n\r\n", argv[0]);
         } else {
             strncpy(server_addr, argv[1], strlen(argv[1]));
         }
-    } else {
-        strncpy(server_addr, LOCAL_SERVER_ADDR, strlen(LOCAL_SERVER_ADDR));
     }
+
+    strncpy(server_addr, LOCAL_SERVER_ADDR, strlen(LOCAL_SERVER_ADDR));
 
     LOGD("\"%s\" will be used as socket addr", server_addr);
     printf("\"%s\" will be used as socket addr\r\n", server_addr);
@@ -135,7 +132,7 @@ int main(int argc, char** argv) {
 
         printf("%s: connect() failed: %s (%d)\n",
             __FUNCTION__, strerror(err), err);
-        
+
         close(client_socket);
         errno = err;
         free(server_addr);
@@ -143,14 +140,14 @@ int main(int argc, char** argv) {
     }
 
     LOGD("Connected to server side");
-    printf("Connected to server side\r\n");
+    printf("\r\nConnected to server side\r\n");
 
     is_connected = 1;
 
     // creating receiver thread
     pthread_create(&receiver_thread, NULL, receive_function, &client_socket);
 
-    printf("Enter commands, hit \"<Ctrl> + C\" to exit\r\n");
+    printf("\r\nEnter commands, hit \"<Ctrl> + C\" to exit\r\n");
 
     // sending loop
     while(is_connected){
@@ -165,7 +162,7 @@ int main(int argc, char** argv) {
             memset(stdin_buffer, '\0' ,sizeof(stdin_buffer));
         } else {
             LOGD("Failed to read from stdin");
-            exit(0);
+            break;
         }
     }
 
